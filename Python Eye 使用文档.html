@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>Python Eye 使用文档</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='python-eye-使用文档'><span>Python Eye 使用文档</span></h1><h2 id='欢迎阅读此文档'><span>欢迎阅读此文档！</span></h2><p>&nbsp;</p><p><span>通过阅读本文档，你将学习如何使用本软件进行python代码调试</span></p><p><span>遇到困难时，请先阅读此文档寻找是否有解决办法，而不是报告问题</span></p><p>&nbsp;</p><ul><li><h3 id='打开代码'><span>打开代码</span></h3><h5 id='这是所有工作的第一步'><span>这是所有工作的第一步</span></h5><ul><li><h5 id='要打开你的代码你可以点击加号或者直接将文件拖进框中'><span>要打开你的代码，你可以点击加号或者直接将文件拖进框中</span></h5></li><li><h5 id='只会打开py代码文件和本软件自定义的eye文件其他文件都将被忽略'><span>只会打开</span><mark><span>py</span></mark><span>代码文件和本软件自定义的</span><mark><span>eye</span></mark><span>文件，其他文件都将被忽略</span></h5></li><li><h5 id='如果一次性拖入了多个文件只会打开第一个文件'><span>如果一次性拖入了多个文件，只会打开第一个文件</span></h5></li></ul></li></ul><p>&nbsp;</p><ul><li><h3 id='文件编码方式'><span>文件编码方式</span></h3></li></ul><h5 id='默认使用utf-8编码你可以点击菜单栏-文件---重新用编码打开-来更改文件编码方式这同时也会设置下次打开代码的默认编码方式你可以在弹出的提示框中看到当前文件的编码方式'><span>默认使用</span><code>UTF-8</code><span>编码，你可以点击菜单栏 </span><code>文件</code><span> -&gt; </span><code>重新用...编码打开</code><span> 来更改文件编码方式，这同时也会设置下次打开代码的默认编码方式，你可以在弹出的提示框中看到当前文件的编码方式。</span></h5><p>&nbsp;</p><ul><li><h3 id='代码编辑'><span>代码编辑</span></h3></li></ul><h5 id='本软件主打调试并不提供直接的代码编辑功能你可以使用-工具---简易编辑-来打开python自带的idle编辑器进行快速编辑保存文件后记得点击-重载文件或者直接使用快捷键-f5-刷新代码'><span>本软件主打调试，并不提供直接的代码编辑功能，你可以使用 </span><code>工具</code><span> -&gt; </span><code>简易编辑</code><span> 来打开Python自带的IDLE编辑器进行快速编辑；保存文件后记得点击 </span><code>重载文件</code><span>，或者直接使用快捷键 </span><code>F5</code><span> 刷新代码。</span></h5><p>&nbsp;</p><ul><li><h3 id='选择python解释器'><span>选择Python解释器</span></h3></li></ul><h5 id='你需要找到自己电脑上的-pythonwexe-文件不推荐选择pythonexe文件它们有一定区别）这个解释器将在进行调试时用来运行你的代码它也可以是你创建的虚拟环境中的解释器请确保它已经安装了相关库以便能够完整地运行你的代码'><span>你需要找到自己电脑上的 </span><mark><span>pythonw.exe</span></mark><span> 文件（不推荐选择python.exe文件，它们有一定区别），这个解释器将在进行调试时用来运行你的代码，它也可以是你创建的虚拟环境中的解释器，请确保它已经安装了相关库以便能够完整地运行你的代码。</span></h5><h5 id='在设置中可以选择自动搜索解释器不过这只能找到系统环境变量中的第一个解释器'><span>在设置中可以选择自动搜索解释器，不过这只能找到系统环境变量中的第一个解释器。</span></h5><blockquote><h5 id='windows-下-python-解释器默认路径'><span>Windows 下 Python 解释器默认路径：</span></h5><h5 id='cusers用户名appdata隐藏文件夹localprogramspythonpython3x'><span>C:\Users</span><span>\</span><span>[用户名]\AppData(隐藏文件夹)\Local\Programs\Python\Python3x</span></h5></blockquote><blockquote><h5 id='macos-下-python-解释器默认路径不是自带的2x版本）'><span>MacOS 下 Python 解释器默认路径（不是自带的2.x版本）：</span></h5><h5 id='users用户名libraryframeworkspythonframeworkversions3xbinpython3x'><span>/Users/[用户名]/Library/Frameworks/Python.framework/Versions/3x/bin/Python3x</span></h5></blockquote><h4 id='选择的python解释器版本必须在38及以上最好是3114及以上尽量选择较新且较稳定的版本如果一定要用38以下的版本你的代码必须以gbk编码'><span>选择的Python解释器版本必须在</span><mark><span>3.8</span></mark><span>及以上，最好是3.11.4及以上，尽量选择较新且较稳定的版本。(如果一定要用3.8以下的版本，你的代码必须以gbk编码)</span></h4><p>&nbsp;</p><ul><li><h3 id='调试代码'><span>调试代码</span></h3></li></ul><h5 id='处于菜单栏下方的灰色栏是操作栏右边五个按钮用于控制代码的运行左边的输入框和按钮用来设置变量追踪'><span>处于菜单栏下方的灰色栏是操作栏，右边五个按钮用于控制代码的运行，左边的输入框和按钮用来设置变量追踪</span></h5><ul><li><h5 id='点击绿色三角开始调试此时另外四个按钮将被释放从左至右依次是'><span>点击绿色三角开始调试，此时另外四个按钮将被释放，从左至右依次是：</span></h5><ul><li><h5 id='步过运行下一行代码并暂停'><span>步过：运行下一行代码并暂停</span></h5></li><li><h5 id='步进运行下一行代码如果有函数调用则进入函数并在第一时间暂停没有函数调用则等效于步过'><span>步进：运行下一行代码，如果有函数调用，则进入函数并在第一时间暂停；没有函数调用则等效于步过</span></h5></li><li><h5 id='持续运行一直运行程序直到程序结束或者遇到断点'><span>持续运行：一直运行程序，直到程序结束或者遇到断点</span></h5></li><li><h5 id='结束函数一直运行程序直到函数return如果不在函数内则等效于持续运行'><span>结束函数：一直运行程序，直到函数return；如果不在函数内，则等效于持续运行</span></h5></li></ul></li></ul><h5 id='这些功能也可以在菜单栏-调试-里找到同时会有对应的快捷键提示右侧对齐的是全局快捷键只要看得见菜单栏就可以用紧跟项名且在括号内的是局部快捷键需要打开对应菜单才可以用）'><span>这些功能也可以在菜单栏 </span><code>调试</code><span> 里找到，同时会有对应的快捷键提示（右侧对齐的是全局快捷键，只要看得见菜单栏就可以用；紧跟项名且在括号内的是局部快捷键，需要打开对应菜单才可以用）</span></h5><ul><li><h5 id='提示行蓝色的高亮行表示将要运行但是还未运行的代码'><span>提示行：蓝色的高亮行，表示</span><em><strong><mark><span>将要运行但是还未运行的代码</span></mark></strong></em></h5></li><li><h5 id='设置断点开启调试以后点击行号即可在对应行设置断点'><span>设置断点：开启调试以后，点击行号即可在对应行设置断点</span></h5><h5 id='断点分为两种'><span>断点分为两种：</span></h5><ul><li><h5 id='普通断点以红色圆点表示左键单击行号创建程序运行至当前行时如果不准备暂停则会被断点强制暂停当前行并未被执行）除非被清除否则该断点将一直存在'><span>普通断点：以红色圆点表示，左键单击行号创建；程序运行至当前行时，如果不准备暂停，则会被断点强制暂停（当前行并未被执行）；除非被清除，否则该断点将一直存在</span></h5></li><li><h5 id='临时断点以黄色圆点表示右键单击行号创建功能与普通断点相同但是在暂停程序时会自动将自己清除'><span>临时断点：以黄色圆点表示，右键单击行号创建；功能与普通断点相同，但是在暂停程序时，会自动将自己清除</span></h5></li></ul><h5 id='要删除断点再次单击行号即可不区分左右键）'><span>要删除断点，再次单击行号即可（不区分左右键）。</span></h5></li><li><h5 id='插入临时代码这个功能在菜单栏-调试-中可以在当前行运行你输入的任何单行python代码'><span>插入临时代码：这个功能在菜单栏 </span><code>调试</code><span> 中，可以在当前行运行你输入的任何单行python代码</span></h5></li></ul><p>&nbsp;</p><ul><li><h3 id='变量追踪'><span>变量追踪</span></h3></li></ul><h5 id='这是本软件的核心功能也是不同于其他代码调试软件的地方'><span>这是本软件的核心功能，也是不同于其他代码调试软件的地方</span></h5><h5 id='在操作栏左侧的输入框里输入变量名称点击右侧眼睛按钮或者直接按下回车会在代码区域生成一个追踪块这可以在你开始代码调试之前进行在代码调试结束之后也不会消失要删除它双击并确认即可'><span>在操作栏左侧的输入框里输入变量名称，点击右侧眼睛按钮或者直接按下回车，会在代码区域生成一个追踪块。这可以在你开始代码调试之前进行，在代码调试结束之后也不会消失，要删除它，双击并确认即可</span></h5><h5 id='你可以创建许多追踪快它们是可以拖动的并且相互之间会碰撞以避免重叠将它们摆在你喜欢的位置后你就可以开始调试代码每次运行代码之后追踪块都会获取自己追踪的变量值并更新如果当前位置无法获取到变量也会有相应显示这使得你可以实时地观察到自己想要的变量在程序执行过程中是如何变化的'><span>你可以创建许多追踪快，它们是可以拖动的，并且相互之间会碰撞以避免重叠。将它们摆在你喜欢的位置后，你就可以开始调试代码，每次运行代码之后，追踪块都会获取自己追踪的变量值并更新，如果当前位置无法获取到变量也会有相应显示。这使得你可以实时地观察到自己想要的变量在程序执行过程中是如何变化的</span></h5><h5 id='追踪块的追踪实际上是对变量进行了一次访问因此你甚至可以追踪-a--b-这样的一段python表达式你会获得-true-或是-false-的追踪结果不过需要注意的是你不可以在追踪项中调用函数因为这有可能更改代码的实际运行情况事实上我对此的检测是你的表达式中不能出现-但仍不排除你可以调用到python提供的魔法方法因此请注意这是否会更改你的代码运行情况'><span>追踪块的追踪实际上是对变量进行了一次访问，因此你甚至可以追踪 </span><code>a &gt; b</code><span> 这样的一段python表达式，你会获得 </span><code>True</code><span> 或是 </span><code>False</code><span> 的追踪结果。不过需要注意的是，</span><mark><span>你不可以在追踪项中调用函数</span></mark><span>，因为这有可能更改代码的实际运行情况。事实上，我对此的检测是你的表达式中不能出现 “(”，但仍不排除你可以调用到Python提供的魔法方法，因此请注意这是否会更改你的代码运行情况</span></h5><p>&nbsp;</p><ul><li><h3 id='保存调试状态'><span>保存调试状态</span></h3></li></ul><h5 id='这是一个非常酷的功能可以让你在调试中途进行保存你将得到一个eye后缀的文件并且在任何时候都可以通过此文件还原调试状态包括运行行数断点设置临时代码变量追踪等你甚至不需要附带源码它就可以还原当前状态前提是所使用的python解释器具备相应运行环境'><span>这是一个非常酷的功能，可以让你在调试中途进行保存，你将得到一个.eye后缀的文件，并且在任何时候都可以通过此文件还原调试状态，包括运行行数，断点设置，临时代码，变量追踪等，你甚至不需要附带源码，它就可以还原当前状态，前提是所使用的python解释器具备相应运行环境</span></h5><h5 id='但需要说明的是虽然脱离源码赋予了eye文件极大的传播和携带优势但代价是它只能是单文件代码你只可以导入存在于python环境中的库否则将无法还原调试'><span>但需要说明的是，虽然脱离源码赋予了eye文件极大的传播和携带优势，但代价是它只能是单文件代码，</span><mark><span>你只可以导入存在于python环境中的库</span></mark><span>，否则将无法还原调试</span></h5><p>&nbsp;</p><ul><li><h3 id='其他注意事项'><span>其他注意事项</span></h3><ul><li><h5 id='请确保你选择的python解释器版本在38及以上否则你将只能打开gbk编码的代码文件这点很重要再强调一遍）'><em><span>请确保你选择的Python解释器版本在3.8及以上，否则你将只能打开gbk编码的代码文件（这点很重要，再强调一遍）</span></em></h5></li><li><h5 id='如果你选择的解释器版本在-38--3113-之间那么在使用io模块时请注意ioopen-函数被我用ioopencode-函数覆盖了你应使用-ioopen-来实现原先的-ioopen-功能不涉及的请忽略）'><span>如果你选择的解释器版本在 </span><em><span>3.8 ~ 3.11.3</span></em><span> 之间，那么在使用io模块时请注意：</span><code>io.open</code><span> 函数被我用</span><code>io.open_code</code><span> 函数覆盖了，你应使用 </span><code>io.open_</code><span> 来实现原先的 </span><code>io.open</code><span> 功能（不涉及的请忽略）</span></h5></li><li><h5 id='在调试代码时执行下一条语句会阻塞主程序直到执行完毕所以如果你的某一条语句有明显的耗时主程序将会被卡住此时windows可能判定此程序未响应这种情况下不用关闭程序等待语句执行完毕即可'><span>在调试代码时，执行下一条语句会</span><mark><span>阻塞</span></mark><span>主程序直到执行完毕，所以如果你的某一条语句有明显的耗时，主程序将会被卡住，此时Windows可能判定此程序未响应，这种情况下不用关闭程序，等待语句执行完毕即可</span></h5></li><li><h5 id='本程序窗口默认大小是-1280×720-像素720p）在某些较小的屏幕上如果显示不全请到设置中勾选-自动缩放窗口-项如果菜单栏溢出屏幕外按下-altn-打开-首选项-菜单再按-s-键即可进入设置'><span>本程序窗口默认大小是 1280×720 像素（720p），在某些较小的屏幕上如果显示不全，请到设置中勾选 </span><code>自动缩放窗口</code><span> 项；如果菜单栏溢出屏幕外，按下 </span><code>Alt+N</code><span> 打开 </span><code>首选项</code><span> 菜单，再按 </span><code>S</code><span> 键即可进入设置</span></h5></li><li><h5 id='windows-在某些较大的屏幕上比如4k屏）可能会设置屏幕缩放比例这会导致程序无法正确识别屏幕尺寸解决办法是右键主程序-pythoneyeexe-点击-属性---兼容性---更改高dpi设置-勾选-替代高dpi缩放行为-确定即可'><span>Windows 在某些较大的屏幕上（比如4k屏），可能会设置屏幕缩放比例，这会导致程序无法正确识别屏幕尺寸，解决办法是右键主程序 </span><code>pythoneye.exe</code><span> ，点击 </span><code>属性</code><span> -&gt; </span><code>兼容性</code><span> -&gt; </span><code>更改高DPI设置</code><span> ，勾选 </span><code>替代高DPI缩放行为</code><span> ，确定即可</span></h5></li><li><h5 id='尚不清楚对-多线程和多进程-的程序进行调试会有什么样的结果谨慎使用'><span>尚不清楚对 多线程和多进程 的程序进行调试会有什么样的结果，谨慎使用！</span></h5></li></ul></li></ul><p>&nbsp;</p><p><span>好了，工具基本介绍完了，至于如何利用以及它会有哪些更高级用法，等待你去探索！</span></p><p><span>从现在起，摆脱低效的 print，开启蟒蛇之眼！</span></p><p>&nbsp;</p><blockquote><h5 id='更新日期202399'><span>更新日期：2023.9.9</span></h5><h5 id='文档编写fantastair'><span>文档编写：Fantastair</span></h5></blockquote></div></div>
+</body>
+</html>
